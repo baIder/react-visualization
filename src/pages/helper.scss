@@ -1,0 +1,3 @@
+@function px($n) {
+  @return calc($n / 2420) * 100rem
+}
