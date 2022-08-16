@@ -1845,6 +1845,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/echarts@^4.9.16":
+  version "4.9.16"
+  resolved "https://registry.npmmirror.com/@types/echarts/-/echarts-4.9.16.tgz#7156aea4623f3543b083200f6c65e04d3693bcc8"
+  integrity sha512-bfiagfPw3dWauAIJ9fgoJQoL4hLWlGcltqwbE6LGye0NIY5xnbZau+mDmadCzGojic3MWuFDCUiO25kl4sRGeA==
+  dependencies:
+    "@types/zrender" "*"
+
 "@types/eslint-scope@^3.7.3":
   version "3.7.4"
   resolved "https://registry.npmmirror.com/@types/eslint-scope/-/eslint-scope-3.7.4.tgz#37fc1223f0786c39627068a12e94d6e6fc61de16"
@@ -2130,6 +2137,11 @@
   integrity sha512-aB4y9UDUXTSMxmM4MH+YnuR0g5Cph3FLQBoWoMB21DSvFVAxRVEHEMx3TLh+zUZYMCQtKiqazz0Q4Rre31f/OA==
   dependencies:
     "@types/yargs-parser" "*"
+
+"@types/zrender@*":
+  version "4.0.3"
+  resolved "https://registry.npmmirror.com/@types/zrender/-/zrender-4.0.3.tgz#d18b31648b2f11b9ec672a560836e1887a965ec1"
+  integrity sha512-EPI269lkHNsObwILJ1k1z7znLjKyePuWRy/XKK0shSGpBb9cIX307arcwJV4+2NeZj5wEjN06r4D8yFv7sI06g==
 
 "@typescript-eslint/eslint-plugin@^5.5.0":
   version "5.33.1"
@@ -3743,6 +3755,14 @@ duplexer@^0.1.2:
   version "0.1.2"
   resolved "https://registry.npmmirror.com/duplexer/-/duplexer-0.1.2.tgz#3abe43aef3835f8ae077d136ddce0f276b0400e6"
   integrity sha512-jtD6YG370ZCIi/9GTaJKQxWTZD045+4R4hTk/x1UyoqadyJ9x9CgSi1RlVDQF8U2sxLLSnFkCaMihqljHIWgMg==
+
+echarts@^5.3.3:
+  version "5.3.3"
+  resolved "https://registry.npmmirror.com/echarts/-/echarts-5.3.3.tgz#df97b09c4c0e2ffcdfb44acf518d50c50e0b838e"
+  integrity sha512-BRw2serInRwO5SIwRviZ6Xgm5Lb7irgz+sLiFMmy/HOaf4SQ+7oYqxKzRHAKp4xHQ05AuHw1xvoQWJjDQq/FGw==
+  dependencies:
+    tslib "2.3.0"
+    zrender "5.3.2"
 
 ee-first@1.1.1:
   version "1.1.1"
@@ -8348,6 +8368,11 @@ tsconfig-paths@^3.14.1:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
+tslib@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npmmirror.com/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
+  integrity sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==
+
 tslib@^1.8.1:
   version "1.14.1"
   resolved "https://registry.npmmirror.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
@@ -9043,3 +9068,10 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmmirror.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+zrender@5.3.2:
+  version "5.3.2"
+  resolved "https://registry.npmmirror.com/zrender/-/zrender-5.3.2.tgz#f67b11d36d3d020d62411d3bb123eb1c93cccd69"
+  integrity sha512-8IiYdfwHj2rx0UeIGZGGU4WEVSDEdeVCaIg/fomejg1Xu6OifAL1GVzIPHg2D+MyUkbNgPWji90t0a8IDk+39w==
+  dependencies:
+    tslib "2.3.0"
