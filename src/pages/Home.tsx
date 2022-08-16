@@ -8,11 +8,15 @@ const Home: React.FC = () => {
       <div className="home">
         <header style={{backgroundImage: `url(${headerBg})`}}/>
         <main>
-          <section className="section1"></section>
-          <section className="section2"></section>
-          <section className="section3"></section>
-          <section className="section4"></section>
-          <section className="section5"></section>
+          <section className="section1">
+            <div className="bordered 管辖统计">
+              <h2>案发派出所管辖统计</h2>
+            </div>
+          </section>
+          <section className="bordered section2"></section>
+          <section className="bordered section3"></section>
+          <section className="bordered section4"></section>
+          <section className="bordered section5"></section>
         </main>
       </div>
     </>
