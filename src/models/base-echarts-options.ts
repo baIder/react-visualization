@@ -10,8 +10,8 @@ export const baseEchartsOptions = {
   grid: {
     containLabel: true,
     left: '2%',
-    top: '10%',
+    top: '4%',
     right: '5%',
-    bottom: '2%',
+    bottom: '4%',
   }
 };

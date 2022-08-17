@@ -9,13 +9,7 @@ const Chart2: React.FC = () => {
     const myChart = echarts.init(divRef.current as HTMLDivElement);
     myChart.setOption({
       ...baseEchartsOptions,
-      grid: {
-        containLabel: true,
-        left: '4%',
-        top: '5%',
-        right: '2%',
-        bottom: '2%',
-      },
+
       legend: {
         bottom: 0,
         right: 0,

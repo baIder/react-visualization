@@ -73,6 +73,9 @@
 
     > .section2 {
       grid-area: box2;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     > .section3 {

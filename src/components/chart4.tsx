@@ -3,32 +3,16 @@ import * as echarts from 'echarts';
 import {px} from './px';
 import {baseEchartsOptions} from '../models/base-echarts-options';
 
-const Chart3: React.FC = () => {
+const Chart4: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const myChart = echarts.init(divRef.current as HTMLDivElement);
     myChart.setOption({
       ...baseEchartsOptions,
-      grid: {
-        containLabel: true,
-        left: '2%',
-        top: '4%',
-        right: '5%',
-        bottom: '20%',
-      },
-      legend: {
-        bottom: 0,
-        itemWidth: px(25),
-        itemHeight: px(14),
-        itemGap: px(10),
-        textStyle: {
-          color: '#fff',
-        },
-      },
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018],
+        data: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24],
         splitLine: {show: true, lineStyle: {color: '#073E78'}},
         axisTick: {show: false},
         axisLine: {show: false},
@@ -49,36 +33,28 @@ const Chart3: React.FC = () => {
         }
       },
       series: [{
-        name: '抢劫',
+        name: '故意伤人',
         type: 'line',
-        data: [0.03, 0.05, 0.05, 0.04, 0.05, 0.07, 0.03, 0.04, 0.03]
-      },
-        {
-          name: '醉驾',
-          type: 'line',
-          data: [0.06, 0.02, 0.07, 0.04, 0.06, 0.07, 0.02, 0.03, 0.01]
-        },
-        {
-          name: '盗窃',
-          type: 'line',
-          data: [0.07, 0.04, 0.09, 0.05, 0.09, 0.02, 0.09, 0.10, 0.02]
-        },
-        {
-          name: '故意杀人',
-          type: 'line',
-          data: [0.08, 0.05, 0.02, 0.04, 0.01, 0.02, 0.05, 0.02, 0.01]
-        },
-        {
-          name: '故意伤人',
-          type: 'line',
-          data: [0.12, 0.07, 0.03, 0.06, 0.05, 0.04, 0.06, 0.03, 0.02]
-        }
-      ].map(obj => ({
-        ...obj,
+        data: [
+          0.15, 0.13, 0.11,
+          0.13, 0.14, 0.15,
+          0.16, 0.18, 0.21,
+          0.19, 0.17, 0.16,
+          0.15
+        ],
         symbol: 'circle',
         symbolSize: px(12),
-        lineStyle: {width: px(2)}
-      }))
+        lineStyle: {width: px(2)},
+        areaStyle: {
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+            offset: 0,
+            color: '#414a9f'
+          }, {
+            offset: 1,
+            color: '#1b1d52'
+          }]),
+        }
+      }]
     });
   }, []);
   return (
@@ -91,4 +67,4 @@ const Chart3: React.FC = () => {
   );
 };
 
-export default Chart3;
+export default Chart4;

@@ -5,6 +5,7 @@ import 'echarts/lib/component/grid';
 import Chart1 from '../components/chart1';
 import Chart2 from '../components/chart2';
 import Chart3 from '../components/chart3';
+import Chart4 from '../components/chart4';
 
 const Home: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Home: React.FC = () => {
           </section>
           <section className="section2">
             <Chart3/>
+            <Chart4/>
           </section>
           <section className="bordered section3"></section>
           <section className="bordered section4"></section>
