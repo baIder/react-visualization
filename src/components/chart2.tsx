@@ -62,15 +62,13 @@ const Chart2: React.FC = () => {
           type: 'bar',
           data: [1, 2, 3, 4, 5, 6, 7, 8, 9],
           itemStyle: {
-            normal: {
-              color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                offset: 0,
-                color: '#2034f9',
-              }, {
-                offset: 1,
-                color: '#04a1ff'
-              }])
-            }
+            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+              offset: 0,
+              color: '#2034f9',
+            }, {
+              offset: 1,
+              color: '#04a1ff'
+            }])
           }
         },
         {
@@ -78,15 +76,13 @@ const Chart2: React.FC = () => {
           type: 'bar',
           data: [2, 3, 4, 5, 6, 7, 8, 9, 10],
           itemStyle: {
-            normal: {
-              color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                offset: 0,
-                color: '#b92ae8',
-              }, {
-                offset: 1,
-                color: '#6773e7'
-              }])
-            }
+            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+              offset: 0,
+              color: '#b92ae8',
+            }, {
+              offset: 1,
+              color: '#6773e7'
+            }])
           }
         }
       ]
