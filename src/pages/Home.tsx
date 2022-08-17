@@ -6,7 +6,6 @@ import Chart1 from '../components/chart1';
 import Chart2 from '../components/chart2';
 
 const Home: React.FC = () => {
-
   return (
     <>
       <div className="home">
@@ -22,6 +21,7 @@ const Home: React.FC = () => {
           <section className="bordered section4"></section>
           <section className="bordered section5"></section>
         </main>
+        <footer>&copy; bald3r · 大屏可视化</footer>
       </div>
     </>
   );
