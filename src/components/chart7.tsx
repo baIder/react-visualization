@@ -26,9 +26,9 @@ const Chart7: React.FC = () => {
         radius: ['75%', '90%'],
         avoidLabelOverlap: false,
         label: {
-          show: false,
+          show: true,
           position: 'inside',
-          textStyle: {color: 'white', fontSize: px(20)},
+          color: 'white', fontSize: px(20),
           formatter(val: any) {
             return val.value * 100 + '%';
           },
