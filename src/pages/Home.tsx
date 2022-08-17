@@ -3,6 +3,7 @@ import '../style/Home.scss';
 import headerBg from '../images/header.png';
 import 'echarts/lib/component/grid';
 import Chart1 from '../components/chart1';
+import Chart2 from '../components/chart2';
 
 const Home: React.FC = () => {
 
@@ -13,8 +14,10 @@ const Home: React.FC = () => {
         <main>
           <section className="section1">
             <Chart1/>
+            <Chart2/>
           </section>
-          <section className="bordered section2"></section>
+          <section className="bordered section2">
+          </section>
           <section className="bordered section3"></section>
           <section className="bordered section4"></section>
           <section className="bordered section5"></section>

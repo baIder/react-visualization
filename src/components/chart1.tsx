@@ -1,23 +1,14 @@
 import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
+import {px} from './px';
+import {baseEchartsOptions} from '../models/base-echarts-options';
 
-const px = (n: number) => n / 2420 * (window as any).pageWidth;
 const Chart1: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const myChart = echarts.init(divRef.current as HTMLDivElement);
     myChart.setOption({
-      textStyle: {
-        fontSize: px(18),
-        color: '#79839e',
-      },
-      grid: {
-        containLabel: true,
-        left: '2%',
-        top: '10%',
-        right: '5%',
-        bottom: '2%',
-      },
+      ...baseEchartsOptions,
       xAxis: {
         data: ['兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区'],
         axisTick: {
@@ -33,12 +24,12 @@ const Chart1: React.FC = () => {
           show: true,
           interval: 0,
           margin: 4,
-          fontSize: px(16),
+          fontSize: px(12),
           formatter(val: string) {
-            const val2 = Array.from(val);
-            if (val2.length > 2) {
-              val2.splice(2, 0, '\n');
-              return val2.join('');
+            const array = Array.from(val);
+            if (array.length > 2) {
+              array.splice(2, 0, '\n');
+              return array.join('');
             } else {
               return val;
             }
@@ -47,7 +38,7 @@ const Chart1: React.FC = () => {
       },
       yAxis: {
         axisLabel: {
-          fontSize: px(18),
+          fontSize: px(12),
           margin: 4,
         },
         splitLine: {
@@ -62,7 +53,6 @@ const Chart1: React.FC = () => {
       },
       series: [
         {
-          name: '销量',
           type: 'bar',
           data: [5, 20, 36, 10, 10, 20, 25]
         }
