@@ -4,6 +4,7 @@ import headerBg from '../images/header.png';
 import 'echarts/lib/component/grid';
 import Chart1 from '../components/chart1';
 import Chart2 from '../components/chart2';
+import Chart3 from '../components/chart3';
 
 const Home: React.FC = () => {
   return (
@@ -15,7 +16,8 @@ const Home: React.FC = () => {
             <Chart1/>
             <Chart2/>
           </section>
-          <section className="bordered section2">
+          <section className="section2">
+            <Chart3/>
           </section>
           <section className="bordered section3"></section>
           <section className="bordered section4"></section>
