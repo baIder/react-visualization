@@ -37,6 +37,7 @@ const Chart12: React.FC = () => {
         textStyle: {color: 'white'},
         itemWidth: px(10),
         itemHeight: px(10),
+        itemGap: px(10),
         formatter(name) {
           // @ts-ignore
           const value = (data).find(i => i.name === name)?.value * 100 + '%';

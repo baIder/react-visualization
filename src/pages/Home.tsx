@@ -14,6 +14,7 @@ import Chart9 from '../components/chart9';
 import Chart10 from '../components/chart10';
 import Chart11 from '../components/chart11';
 import Chart12 from '../components/chart12';
+import Chart13 from '../components/chart13';
 
 const Home: React.FC = () => {
   return (
@@ -55,6 +56,7 @@ const Home: React.FC = () => {
               <h2>案发街道统计</h2>
               <div className="charts">
                 <Chart12/>
+                <Chart13/>
               </div>
             </div>
             <div className="bordered row3 作案手段">
