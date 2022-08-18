@@ -18,7 +18,7 @@ const Chart10: React.FC = () => {
         },
         axisLabel: {
           fontSize: px(12),
-          
+
           formatter(val: string) {
             if (val.length > 2) {
               const array = val.split('');
@@ -57,9 +57,8 @@ const Chart10: React.FC = () => {
   }, []);
   return (
     <>
-      <div className="bordered row1 案发类型">
-        <h2>案发类型统计</h2>
-        <div className="chart" ref={divRef}></div>
+      <div ref={divRef} className="chart">
+
       </div>
     </>
   );
