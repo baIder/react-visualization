@@ -5,10 +5,7 @@ import {baseEchartsOptions} from '../models/base-echarts-options';
 
 const Chart12: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
-  const colors = ['#F46064', '#F38E1C', '#1CDB7C', '#8D70F8', '#33A4FA'];
-  type Data =
-    { value: number, name: string }[]
-
+  type Data = { value: number, name: string }[]
   const data: Data = [
     {value: 0.08, name: '东岗路'},
     {value: 0.06, name: '段家滩'},
@@ -26,7 +23,13 @@ const Chart12: React.FC = () => {
       ...baseEchartsOptions,
       xAxis: {show: false},
       yAxis: {show: false},
-      // grid: {x: 0, x2: 0, y: 0, y2: 0, containLabel: true},
+      grid: {
+        containLabel: true,
+        left: '0%',
+        top: '0%',
+        right: '0%',
+        bottom: '0%',
+      },
       legend: {
         orient: 'vertical',
         left: 'left',
