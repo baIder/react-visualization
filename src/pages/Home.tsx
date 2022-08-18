@@ -54,7 +54,7 @@ const Home: React.FC = () => {
             <div className="bordered row2 案发街道">
               <h2>案发街道统计</h2>
               <div className="charts">
-
+                <Chart12/>
               </div>
             </div>
             <div className="bordered row3 作案手段">
