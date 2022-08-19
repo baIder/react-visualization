@@ -29,7 +29,12 @@ const Home: React.FC = () => {
           <section className="bordered section1"><Chart2/></section>
           <section className="bordered section2"><Chart3/></section>
           <section className="bordered section3">
-            <Chart7/> <Chart9/>
+            <div className="section3Wrapper">
+              <h2>s3</h2>
+              <div className="chartWrapper">
+                <Chart7/> <Chart9/>
+              </div>
+            </div>
           </section>
           <section className="bordered section4">
           </section>
