@@ -77,7 +77,7 @@ const Chart6: React.FC = () => {
   }, []);
   return (
     <>
-      <div className="bordered 籍贯">
+      <div className="bordered map">
         <h2>全市犯罪人员籍贯分布地</h2>
         <div className="wrapper">
           <div ref={divRef} className="chart"/>

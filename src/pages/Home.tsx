@@ -36,7 +36,9 @@ const Home: React.FC = () => {
               </div>
             </div>
           </section>
-          <section className="bordered section4">
+          <section className="section4">
+            <Chart6/>
+            <div className="section4-2 bordered"></div>
           </section>
           <section className="bordered section5"><Chart11/></section>
           <section className="bordered section6"><Chart12/></section>
