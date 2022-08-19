@@ -31,7 +31,7 @@ const Home: React.FC = () => {
           <section className="bordered section2"><Chart3/></section>
           <section className="bordered section3">
             <div className="section3Wrapper">
-              <h2>s3</h2>
+              <h2>员工组成</h2>
               <div className="chartWrapper">
                 <Chart7/> <Chart9/>
               </div>
