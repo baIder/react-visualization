@@ -90,7 +90,7 @@ const Chart2: React.FC = () => {
   }, []);
   return (
     <>
-      <div className="bordered 破获排名">
+      <div className="破获排名">
         <h2>案件破获排名</h2>
         <div className="chart" ref={divRef}></div>
       </div>
