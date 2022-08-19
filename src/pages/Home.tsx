@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style/Home.scss';
-import headerBg from '../images/header.png';
+import headerBg from '../images/header-nobg.png';
 import 'echarts/lib/component/grid';
 import Chart1 from '../components/chart1';
 import Chart2 from '../components/chart2';
@@ -16,12 +16,15 @@ import Chart11 from '../components/chart11';
 import Chart12 from '../components/chart12';
 import Chart13 from '../components/chart13';
 import Chart14 from '../components/chart14';
+import Header from '../components/Header';
 
 const Home: React.FC = () => {
   return (
     <>
       <div className="home">
-        <header style={{backgroundImage: `url(${headerBg})`}}/>
+        <header style={{backgroundImage: `url(${headerBg})`}}>
+          <Header/>
+        </header>
         <main>
           <section className="section1">
             <Chart1/>
