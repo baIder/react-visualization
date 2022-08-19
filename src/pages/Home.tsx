@@ -1,6 +1,6 @@
 import React from 'react';
 import '../style/Home.scss';
-import headerBg from '../images/header-nobg.png';
+import headerBg from '../images/header-notext.png';
 import 'echarts/lib/component/grid';
 import Chart1 from '../components/chart1';
 import Chart2 from '../components/chart2';

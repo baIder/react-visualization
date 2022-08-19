@@ -46,7 +46,7 @@ const Chart12: React.FC = () => {
       },
       series: [
         {
-          center: ['60%', '50%'],
+          center: ['50%', '50%'],
           type: 'pie',
           radius: '80%',
           label: {show: false},

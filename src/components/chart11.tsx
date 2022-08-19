@@ -13,7 +13,17 @@ const Chart11: React.FC = () => {
       color: colors,
       xAxis: {show: false},
       yAxis: {show: false},
-      legend: {show: false},
+      legend: {
+        left: 0,
+        top: 'center',
+        itemWidth: px(25),
+        itemHeight: px(14),
+        itemGap: px(10),
+        orient: 'vertical',
+        textStyle: {
+          color: '#fff',
+        },
+      },
       series: [
         {
           startAngle: -20,
@@ -50,12 +60,6 @@ const Chart11: React.FC = () => {
         <div className="chart11">
           <div className="chart">
             <div className="main" ref={divRef}/>
-          </div>
-          <div className="legend">
-            <span style={{background: colors[0]}}/>刑事
-            <span style={{background: colors[1]}}/>民事
-            <span style={{background: colors[2]}}/>经济
-            <span style={{background: colors[3]}}/>其他
           </div>
         </div>
       </div>
