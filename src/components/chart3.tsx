@@ -5,9 +5,18 @@ import {baseEchartsOptions} from '../models/base-echarts-options';
 
 const Chart3: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const myChart = echarts.init(divRef.current as HTMLDivElement);
-    myChart.setOption({
+  const myChart = useRef(null);
+  type Data = { name: string, value: number[] }[]
+  const data: Data = [
+    {name: '华东分公司', value: [0.56, 0.68, 0.79, 0.71]},
+    {name: '华北分公司', value: [0.98, 0.52, 0.87, 0.15]},
+    {name: '天津分公司', value: [0.57, 0.81, 0.32, 0.13]},
+    {name: '西南分公司', value: [0.63, 0.20, 0.14, 0.96]},
+    {name: '杭州分公司', value: [0.43, 0.16, 0.34, 0.76]},
+  ];
+  const renderChart = (data: Data) => {
+    // @ts-ignore
+    myChart.current.setOption({
       ...baseEchartsOptions,
       grid: {
         containLabel: true,
@@ -28,63 +37,93 @@ const Chart3: React.FC = () => {
       xAxis: {
         type: 'category',
         boundaryGap: false,
-        data: [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018],
-        splitLine: {show: true, lineStyle: {color: '#073E78'}},
+        data: ['第一季度', '第二季度', '第三季度', '第四季度'],
+        splitLine: {show: false, lineStyle: {color: '#073E78'}},
         axisTick: {show: false},
-        axisLine: {show: false},
+        axisLine: {
+          show: true,
+          lineStyle: {
+            color: '#083b70'
+          }
+        },
         axisLabel: {
           fontSize: px(12),
-          interval: 1,
         }
       },
       yAxis: {
         type: 'value',
-        splitLine: {lineStyle: {color: '#073E78'}},
+        splitLine: {show: false, lineStyle: {color: '#073E78'}},
+        data: data.map(i => i.name),
+        axisLine: {
+          show: true,
+          lineStyle: {
+            color: '#083b70'
+          }
+        },
         axisLabel: {
           fontSize: px(12),
           margin: px(10),
           formatter(val: string) {
             return parseFloat(val) * 100 + '%';
           }
-        }
+        },
       },
+      // @ts-ignore
       series: [{
-        name: '抢劫',
+        name: '华东分公司',
         type: 'line',
-        data: [0.03, 0.05, 0.05, 0.04, 0.05, 0.07, 0.03, 0.04, 0.03]
+        data: data.find(i => i.name === '华东分公司')?.value
       },
         {
-          name: '醉驾',
+          name: '华北分公司',
           type: 'line',
-          data: [0.06, 0.02, 0.07, 0.04, 0.06, 0.07, 0.02, 0.03, 0.01]
+          data: data.find(i => i.name === '华北分公司')?.value
         },
         {
-          name: '盗窃',
+          name: '天津分公司',
           type: 'line',
-          data: [0.07, 0.04, 0.09, 0.05, 0.09, 0.02, 0.09, 0.10, 0.02]
+          data: data.find(i => i.name === '天津分公司')?.value
         },
         {
-          name: '故意杀人',
+          name: '西南分公司',
           type: 'line',
-          data: [0.08, 0.05, 0.02, 0.04, 0.01, 0.02, 0.05, 0.02, 0.01]
+          data: data.find(i => i.name === '西南分公司')?.value
         },
         {
-          name: '故意伤人',
+          name: '杭州分公司',
           type: 'line',
-          data: [0.12, 0.07, 0.03, 0.06, 0.05, 0.04, 0.06, 0.03, 0.02]
+          data: data.find(i => i.name === '杭州分公司')?.value
         }
       ].map(obj => ({
         ...obj,
         symbol: 'circle',
         symbolSize: px(12),
         lineStyle: {width: px(2)}
-      }))
+      })),
     });
+  };
+  useEffect(() => {
+    setInterval(() => {
+      const newData: Data = [
+        {name: '华东分公司', value: [Math.random(), Math.random(), Math.random(), Math.random()]},
+        {name: '华北分公司', value: [Math.random(), Math.random(), Math.random(), Math.random()]},
+        {name: '天津分公司', value: [Math.random(), Math.random(), Math.random(), Math.random()]},
+        {name: '西南分公司', value: [Math.random(), Math.random(), Math.random(), Math.random()]},
+        {name: '杭州分公司', value: [Math.random(), Math.random(), Math.random(), Math.random()]},
+      ];
+      renderChart(newData);
+    }, 2000);
+  }, []);
+  useEffect(() => {
+    // @ts-ignore
+    myChart.current = echarts.init(divRef.current as HTMLDivElement);
+    renderChart(data);
+
   }, []);
   return (
     <>
-      <div className="bordered 发案趋势">
-        <h2>发案趋势分析</h2>
+      <div className="profit">
+        <h2>各分公司利润率趋势</h2>
         <div className="chart" ref={divRef}></div>
       </div>
     </>

@@ -16,7 +16,7 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git remote add origin git@github.com:baIder/react-visualization-pages.git
+git remote add origin git@gitee.com:bald3r/visualization-customize.git
 git branch -M main
 git push -u -f origin main
 # 部署到 https://<USERNAME>.github.io
