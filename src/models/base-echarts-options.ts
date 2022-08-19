@@ -13,5 +13,5 @@ export const baseEchartsOptions = {
     top: '4%',
     right: '5%',
     bottom: '4%',
-  }
+  },
 };

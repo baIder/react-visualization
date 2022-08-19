@@ -17,6 +17,7 @@ import Chart12 from '../components/chart12';
 import Chart13 from '../components/chart13';
 import Chart14 from '../components/chart14';
 import Header from '../components/Header';
+import Chart15 from '../components/chart15';
 
 const Home: React.FC = () => {
   return (
@@ -26,7 +27,7 @@ const Home: React.FC = () => {
           <Header/>
         </header>
         <main>
-          <section className="bordered section1"><Chart2/></section>
+          <section className="bordered section1"><Chart15/></section>
           <section className="bordered section2"><Chart3/></section>
           <section className="bordered section3">
             <div className="section3Wrapper">
@@ -38,7 +39,9 @@ const Home: React.FC = () => {
           </section>
           <section className="section4">
             <Chart6/>
-            <div className="section4-2 bordered"></div>
+            <div className="section4-2 bordered">
+              <Chart2/>
+            </div>
           </section>
           <section className="bordered section5"><Chart11/></section>
           <section className="bordered section6"><Chart12/></section>
