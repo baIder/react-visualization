@@ -55,7 +55,7 @@ const Chart9: React.FC = () => {
   }, []);
   return (
     <>
-      <div className="年龄段-图3">
+      <div className="age">
         <h3>犯罪年龄趋势图</h3>
         <div className="chart" ref={divRef}></div>
       </div>

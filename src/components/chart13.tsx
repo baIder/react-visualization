@@ -77,7 +77,10 @@ const Chart13: React.FC = () => {
   }, []);
   return (
     <>
-      <div ref={divRef} className="chart"/>
+      <div>
+        <h2>Chart13</h2>
+        <div ref={divRef} className="chart"/>
+      </div>
     </>
   );
 };

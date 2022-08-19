@@ -26,22 +26,16 @@ const Home: React.FC = () => {
           <Header/>
         </header>
         <main>
-          <section className="bordered section1">
-            <Chart2/>
-          </section>
-          <section className="bordered section2">
-            <Chart3/>
-          </section>
+          <section className="bordered section1"><Chart2/></section>
+          <section className="bordered section2"><Chart3/></section>
           <section className="bordered section3">
-            <Chart7/>
-            <Chart9/>
+            <Chart7/> <Chart9/>
           </section>
           <section className="bordered section4">
           </section>
-          <section className="bordered section5">
-          </section>
-          <section className="bordered section6"></section>
-          <section className="bordered section7"></section>
+          <section className="bordered section5"><Chart11/></section>
+          <section className="bordered section6"><Chart12/></section>
+          <section className="bordered section7"><Chart13/></section>
         </main>
         <footer>&copy; bald3r · 大屏可视化</footer>
       </div>

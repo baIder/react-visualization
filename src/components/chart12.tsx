@@ -65,9 +65,12 @@ const Chart12: React.FC = () => {
   }, []);
   return (
     <>
-      <div className="chart12">
-        <div className="chart">
-          <div className="main" ref={divRef}/>
+      <div>
+        <h2>Chart12</h2>
+        <div className="chart12">
+          <div className="chart">
+            <div className="main" ref={divRef}/>
+          </div>
         </div>
       </div>
     </>

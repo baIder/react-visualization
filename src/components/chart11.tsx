@@ -3,7 +3,7 @@ import * as echarts from 'echarts';
 import {px} from './px';
 import {baseEchartsOptions} from '../models/base-echarts-options';
 
-const Chart10: React.FC = () => {
+const Chart11: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   const colors = ['#F46064', '#F38E1C', '#1CDB7C', '#8D70F8', '#33A4FA'];
   useEffect(() => {
@@ -45,19 +45,22 @@ const Chart10: React.FC = () => {
   }, []);
   return (
     <>
-      <div className="chart11">
-        <div className="chart">
-          <div className="main" ref={divRef}/>
-        </div>
-        <div className="legend">
-          <span style={{background: colors[0]}}/>刑事
-          <span style={{background: colors[1]}}/>民事
-          <span style={{background: colors[2]}}/>经济
-          <span style={{background: colors[3]}}/>其他
+      <div>
+        <h2>Chart11</h2>
+        <div className="chart11">
+          <div className="chart">
+            <div className="main" ref={divRef}/>
+          </div>
+          <div className="legend">
+            <span style={{background: colors[0]}}/>刑事
+            <span style={{background: colors[1]}}/>民事
+            <span style={{background: colors[2]}}/>经济
+            <span style={{background: colors[3]}}/>其他
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default Chart10;
+export default Chart11;
