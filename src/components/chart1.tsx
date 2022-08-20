@@ -7,39 +7,53 @@ const Chart1: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const myChart = echarts.init(divRef.current as HTMLDivElement);
+    const data: number[] = [];
+    for (let i = 0; i < 5; ++i) {
+      data.push(Math.round(Math.random() * 200));
+    }
+    // @ts-ignore
     myChart.setOption({
       ...baseEchartsOptions,
-      xAxis: {
-        data: ['兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区', '兰州新区'],
-        axisTick: {
-          show: false
+      grid: {
+        containLabel: true,
+        left: '2%',
+        top: '4%',
+        right: '10%',
+        bottom: '4%',
+      },
+      legend: {
+        show: true,
+        bottom: 0,
+        right: 0,
+        itemWidth: px(25),
+        itemHeight: px(14),
+        itemGap: px(10),
+        orient: 'vertical',
+        textStyle: {
+          color: '#fff',
         },
+      },
+      xAxis: {
+        max: 'dataMax',
+        type: 'value',
+        boundaryGap: [0, 0.01],
         axisLine: {
-          show: true,
-          lineStyle: {
-            color: '#083b70'
-          }
+          show: false,
+        },
+        splitLine: {
+          show: false,
         },
         axisLabel: {
-          show: true,
-          interval: 0,
-          margin: 4,
-          fontSize: px(12),
-          formatter(val: string) {
-            const array = Array.from(val);
-            if (array.length > 2) {
-              array.splice(2, 0, '\n');
-              return array.join('');
-            } else {
-              return val;
-            }
-          }
+          show: false,
         },
       },
       yAxis: {
+        type: 'category',
+        axisTick: {show: false},
+        data: ['华东分公司', '华北分公司', '天津分公司', '西南分公司', '杭州分公司'],
         axisLabel: {
           fontSize: px(12),
-          margin: 4,
+          margin: px(8),
         },
         splitLine: {
           show: false,
@@ -50,19 +64,71 @@ const Chart1: React.FC = () => {
             color: '#083b70'
           }
         },
+        inverse: true,
+        animationDuration: 300,
+        animationDurationUpdate: 300,
       },
       series: [
         {
+          realtimeSort: true,
+          name: '销售额',
           type: 'bar',
-          data: [5, 20, 36, 10, 10, 20, 25]
+          data: data,
+          label: {
+            show: true,
+            color: '#fff',
+            fontSize: px(16),
+            position: 'right',
+            valueAnimation: true
+          },
+          itemStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+              offset: 0,
+              color: '#b92ae8',
+            }, {
+              offset: 1,
+              color: '#6773e7'
+            }])
+          }
         }
-      ]
+      ],
+      animationDuration: 0,
+      animationDurationUpdate: 3000,
+      animationEasing: 'linear',
+      animationEasingUpdate: 'linear'
     });
+
+    function run() {
+      for (let i = 0; i < data.length; ++i) {
+        if (Math.random() > 0.9) {
+          data[i] += Math.round(Math.random() * 2000);
+        } else {
+          data[i] += Math.round(Math.random() * 200);
+        }
+      }
+      myChart.setOption({
+        series: [
+          {
+            type: 'bar',
+            data
+          }
+        ]
+      });
+    }
+
+    setTimeout(function () {
+      run();
+    }, 0);
+    setInterval(function () {
+      run();
+    }, 3000);
   }, []);
+
+
   return (
     <>
-      <div className="bordered 管辖统计">
-        <h2>案发派出所管辖统计</h2>
+      <div className="sales">
+        <h2>各分公司销售额</h2>
         <div className="chart" ref={divRef}></div>
       </div>
     </>

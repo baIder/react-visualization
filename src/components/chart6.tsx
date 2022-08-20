@@ -1,134 +1,88 @@
 import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
+import {px} from './px';
 import {baseEchartsOptions} from '../models/base-echarts-options';
-import china from '../geo/china.json';
-import Time from './Time';
+import {EChartOption} from 'echarts';
+import {Data} from '../react-app-env';
 
 const Chart6: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   const colors = ['#F46064', '#F38E1C', '#1CDB7C', '#8D70F8', '#33A4FA'];
-  echarts.registerMap('CN', china);
+  const data: Data = [
+    {value: 0.32, name: '华东分公司'},
+    {value: 0.22, name: '华北分公司'},
+    {value: 0.18, name: '天津分公司'},
+    {value: 0.11, name: '西南分公司'},
+    {value: 0.17, name: '杭州分公司'},
+  ];
+  const option = {
+    ...baseEchartsOptions,
+    color: colors,
+    xAxis: {show: false},
+    yAxis: {show: false},
+    legend: {
+      left: '80%',
+      align: 'right',
+      top: 'center',
+      itemWidth: px(25),
+      itemHeight: px(14),
+      itemGap: px(10),
+      orient: 'vertical',
+      textStyle: {
+        color: '#fff',
+      },
+    },
+    series: [
+      {
+        startAngle: -20,
+        type: 'pie',
+        radius: ['25%', '90%'],
+        center: ['40%', '50%'],
+        avoidLabelOverlap: false,
+        label: {
+          show: true, position: 'outside', color: 'white', fontSize: px(20),
+          distanceToLabelLine: 0,
+          formatter(options: any) {
+            return (options.value * 100).toFixed(0) + '%';
+          }
+        },
+        labelLine: {show: true, length: 0},
+        roseType: 'area',
+        itemStyle: {
+          shadowBlur: px(200),
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        },
+        data: data
+      }
+    ]
+  };
   useEffect(() => {
     const myChart = echarts.init(divRef.current as HTMLDivElement);
-    myChart.setOption({
-      ...baseEchartsOptions,
-      xAxis: {show: false},
-      yAxis: {show: false},
-      series: [
-        //天津color3
-        {
-          type: 'map',
-          map: 'CN', // 自定义扩展图表类型
-          data: [
-            {name: '天津市', value: 1},
-          ],
-          label: {show: false, color: 'white'},
-          itemStyle: {
-            areaColor: '#010D3D',
-            color: colors[3],
-            borderColor: '#01A7F7',
-          },
-          emphasis: {
-            label: {
-              show: true,
-              color: '#fff'
-            }
-          }
-        },
-        //四川西南color4
-        {
-          type: 'map',
-          map: 'CN', // 自定义扩展图表类型
-          data: [
-            {name: '四川省', value: 100},
-          ],
-          itemStyle: {
-            areaColor: '#010D3D',
-            color: colors[4],
-            borderColor: '#01A7F7',
-          },
-          emphasis: {
-            label: {
-              show: true,
-              color: '#fff'
-            }
-          }
-        },
-        //青海 华北 2
-        {
-          type: 'map',
-          map: 'CN', // 自定义扩展图表类型
-          data: [
-            {name: '青海省', value: 100},
-          ],
-          itemStyle: {
-            areaColor: '#010D3D',
-            color: colors[2],
-            borderColor: '#01A7F7',
-          },
-          emphasis: {
-            label: {
-              show: true,
-              color: '#fff'
-            }
-          }
-        },
-        //浙江 杭州 5
-        {
-          type: 'map',
-          map: 'CN', // 自定义扩展图表类型
-          data: [
-            {name: '浙江省', value: 100},
-          ],
-          itemStyle: {
-            areaColor: '#010D3D',
-            color: colors[5],
-            borderColor: '#01A7F7',
-          },
-          emphasis: {
-            label: {
-              show: true,
-              color: '#fff'
-            }
-          }
-        },
-        //广东  华东1
-        {
-          type: 'map',
-          map: 'CN', // 自定义扩展图表类型
-          data: [
-            {name: '广东省', value: 100},
-          ],
-          itemStyle: {
-            areaColor: '#010D3D',
-            color: colors[1],
-            borderColor: '#01A7F7',
-          },
-          emphasis: {
-            label: {
-              show: true,
-              color: '#fff'
-            }
-          }
-        },
-      ]
-    });
+    myChart.setOption(option as EChartOption);
+
+    function update() {
+      const data = option.series[0].data;
+      data[4].value = 1;
+      for (let i = 0; i < 4; i++) {
+        data[i].value = 0.15 + Math.random() * 0.1;
+        data[4].value -= data[i].value as number;
+      }
+      myChart.setOption(option as EChartOption);
+    }
+
+    setInterval(function () {
+      update();
+    }, 4000);
+
   }, []);
   return (
     <>
-      <div className="bordered map">
-        {/*<h2>全市犯罪人员籍贯分布地</h2>*/}
-        <div className="wrapper">
-          <Time/>
-          <div ref={divRef} className="chart"/>
-          <div className="legend bordered">
-            <span className="icon" style={{background: colors[1]}}/>华东分公司
-            <span className="icon" style={{background: colors[2]}}/>华北分公司
-            <span className="icon" style={{background: colors[3]}}/>天津分公司
-            <span className="icon" style={{background: colors[4]}}/>西南分公司
-            <span className="icon" style={{background: colors[5]}}/>杭州分公司
+      <div>
+        <h2>各分公司利润占比</h2>
+        <div className="chart11">
+          <div className="chart">
+            <div className="main" ref={divRef}/>
           </div>
-          <div className="notes">此地图仅显示了中国的部分区域</div>
         </div>
       </div>
     </>

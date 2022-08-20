@@ -1,56 +1,135 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
+import * as echarts from 'echarts';
+import {baseEchartsOptions} from '../models/base-echarts-options';
+import china from '../geo/china.json';
+import Time from './Time';
 
 const Chart5: React.FC = () => {
+  const divRef = useRef<HTMLDivElement>(null);
+  const colors = ['#F46064', '#F38E1C', '#1CDB7C', '#8D70F8', '#33A4FA'];
+  echarts.registerMap('CN', china);
+  useEffect(() => {
+    const myChart = echarts.init(divRef.current as HTMLDivElement);
+    myChart.setOption({
+      ...baseEchartsOptions,
+      xAxis: {show: false},
+      yAxis: {show: false},
+      series: [
+        //天津color3
+        {
+          type: 'map',
+          map: 'CN', // 自定义扩展图表类型
+          data: [
+            {name: '天津市', value: 1},
+          ],
+          label: {show: false, color: 'white'},
+          itemStyle: {
+            areaColor: '#010D3D',
+            color: colors[3],
+            borderColor: '#01A7F7',
+          },
+          emphasis: {
+            label: {
+              show: true,
+              color: '#fff'
+            }
+          }
+        },
+        //四川西南color4
+        {
+          type: 'map',
+          map: 'CN', // 自定义扩展图表类型
+          data: [
+            {name: '四川省', value: 100},
+          ],
+          itemStyle: {
+            areaColor: '#010D3D',
+            color: colors[4],
+            borderColor: '#01A7F7',
+          },
+          emphasis: {
+            label: {
+              show: true,
+              color: '#fff'
+            }
+          }
+        },
+        //青海 华北 2
+        {
+          type: 'map',
+          map: 'CN', // 自定义扩展图表类型
+          data: [
+            {name: '青海省', value: 100},
+          ],
+          itemStyle: {
+            areaColor: '#010D3D',
+            color: colors[2],
+            borderColor: '#01A7F7',
+          },
+          emphasis: {
+            label: {
+              show: true,
+              color: '#fff'
+            }
+          }
+        },
+        //浙江 杭州 5
+        {
+          type: 'map',
+          map: 'CN', // 自定义扩展图表类型
+          data: [
+            {name: '浙江省', value: 100},
+          ],
+          itemStyle: {
+            areaColor: '#010D3D',
+            color: colors[5],
+            borderColor: '#01A7F7',
+          },
+          emphasis: {
+            label: {
+              show: true,
+              color: '#fff'
+            }
+          }
+        },
+        //广东  华东1
+        {
+          type: 'map',
+          map: 'CN', // 自定义扩展图表类型
+          data: [
+            {name: '广东省', value: 100},
+          ],
+          itemStyle: {
+            areaColor: '#010D3D',
+            color: colors[1],
+            borderColor: '#01A7F7',
+          },
+          emphasis: {
+            label: {
+              show: true,
+              color: '#fff'
+            }
+          }
+        },
+      ]
+    });
+  }, []);
   return (
     <>
-      <div className="战果">
-        <h2>往年战果数对比</h2>
-        <table>
-          <thead>
-          <tr>
-            <th>年份</th>
-            <th>破案数</th>
-            <th>抓获嫌疑人</th>
-            <th>并串案件</th>
-            <th>现勘录入</th>
-            <th>视侦录入</th>
-            <th>合成案件数</th>
-            <th>合计</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>2015</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-          </tr>
-          <tr>
-            <td>2016</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-          </tr>
-          <tr>
-            <td>2017</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-          </tr>
-          </tbody>
-        </table>
+      <div className="bordered map">
+        {/*<h2>全市犯罪人员籍贯分布地</h2>*/}
+        <div className="wrapper">
+          <Time/>
+          <div ref={divRef} className="chart"/>
+          <div className="legend bordered">
+            <span className="icon" style={{background: colors[1]}}/>华东分公司
+            <span className="icon" style={{background: colors[2]}}/>华北分公司
+            <span className="icon" style={{background: colors[3]}}/>天津分公司
+            <span className="icon" style={{background: colors[4]}}/>西南分公司
+            <span className="icon" style={{background: colors[5]}}/>杭州分公司
+          </div>
+          <div className="notes">此地图仅显示了中国的部分区域</div>
+        </div>
       </div>
     </>
   );

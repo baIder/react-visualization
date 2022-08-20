@@ -2,60 +2,79 @@ import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {px} from './px';
 import {baseEchartsOptions} from '../models/base-echarts-options';
-import {Data} from '../react-app-env';
 import {EChartOption} from 'echarts';
+import {Data} from '../react-app-env';
 
 const Chart7: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   const data: Data = [
-    {value: 0.4, name: '女'},
-    {value: 0.6, name: '男'},
+    {value: 0.08, name: '纯牛奶'},
+    {value: 0.06, name: '奶粉'},
+    {value: 0.11, name: '雪糕'},
+    {value: 0.09, name: '奶酪'},
+    {value: 0.12, name: '酸奶'},
+    {value: 0.06, name: '常温奶'},
+    {value: 0.08, name: '调味乳'},
+    {value: 0.08, name: '奶片'},
+    {value: 0.08, name: '冰淇淋'},
   ];
   const option = {
     ...baseEchartsOptions,
-    color: ['#8D70F8', '#33A4FA'],
-    grid: {
-      containLabel: true,
-      left: '2%',
-      top: '0%',
-      right: '5%',
-      bottom: '10%',
-    },
     xAxis: {show: false},
     yAxis: {show: false},
-    legend: {show: false},
-    series: [{
-      name: '年龄分布',
-      type: 'pie',
-      radius: ['75%', '90%'],
-      avoidLabelOverlap: false,
-      label: {
-        show: true,
-        position: 'inside',
-        color: 'white', fontSize: px(20),
-        formatter(val: any) {
-          return (val.value * 100).toFixed(0) + '%';
+    grid: {
+      containLabel: true,
+      left: '0%',
+      top: '0%',
+      right: '0%',
+      bottom: '0%',
+    },
+    legend: {
+      orient: 'vertical',
+      left: '85%',
+      align: 'right',
+      top: 'center',
+      textStyle: {color: 'white', fontSize: px(12)},
+      itemWidth: px(16),
+      itemHeight: px(10),
+      itemGap: px(10),
+    },
+    series: [
+      {
+        center: ['40%', '50%'],
+        type: 'pie',
+        radius: '80%',
+        label: {
+          show: true,
+          color: '#fff',
+          fontSize: px(12),
+          formatter(data: any) {
+            return Math.ceil((data.value * 100)).toString() + '%';
+          }
         },
-      },
-      labelLine: {
-        show: false
-      },
-      itemStyle: {
-        borderColor: '#0F113A',
-        borderWidth: px(4)
-      },
-      data: data
-    }]
+        labelLine: {show: true},
+        data: data,
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    ]
   };
   useEffect(() => {
     const myChart = echarts.init(divRef.current as HTMLDivElement);
-    myChart.setOption(option);
+    myChart.setOption(option as EChartOption);
 
     function update() {
       const data = option.series[0].data;
-      data[0].value = 0.4 + Math.random() * 0.2;
-      data[1].value = 1 - data[0].value;
-
+      data[8].value = 1;
+      for (let i = 0; i < 8; i++) {
+        data[i].value = 0.05 + Math.random() * 0.1;
+        data[8].value -= data[i].value as number;
+      }
       myChart.setOption(option as EChartOption);
     }
 
@@ -66,14 +85,12 @@ const Chart7: React.FC = () => {
   }, []);
   return (
     <>
-      <div className="age">
-        <div className="chart">
-          <div className="main" ref={divRef}/>
-          <div className="text">性别</div>
-        </div>
-        <div className="legend">
-          <span className="male"/>男
-          <span className="female"/>女
+      <div>
+        <h2>售出产品金额占比</h2>
+        <div className="chart12">
+          <div className="chart">
+            <div className="main" ref={divRef}/>
+          </div>
         </div>
       </div>
     </>

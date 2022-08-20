@@ -3,128 +3,78 @@ import * as echarts from 'echarts';
 import {px} from './px';
 import {baseEchartsOptions} from '../models/base-echarts-options';
 import {Data} from '../react-app-env';
+import {EChartOption} from 'echarts';
 
 const Chart3: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
-  const myChart = useRef(null);
   const data: Data = [
-    {name: '华东分公司', value: [0.56, 0.68, 0.79, 0.71]},
-    {name: '华北分公司', value: [0.98, 0.52, 0.87, 0.15]},
-    {name: '天津分公司', value: [0.57, 0.81, 0.32, 0.13]},
-    {name: '西南分公司', value: [0.63, 0.20, 0.14, 0.96]},
-    {name: '杭州分公司', value: [0.43, 0.16, 0.34, 0.76]},
+    {value: 0.4, name: '女'},
+    {value: 0.6, name: '男'},
   ];
-  const renderChart = (data: Data) => {
-    // @ts-ignore
-    myChart.current.setOption({
-      ...baseEchartsOptions,
-      grid: {
-        containLabel: true,
-        left: '2%',
-        top: '4%',
-        right: '5%',
-        bottom: '20%',
-      },
-      legend: {
-        bottom: 0,
-        itemWidth: px(25),
-        itemHeight: px(14),
-        itemGap: px(10),
-        textStyle: {
-          color: '#fff',
+  const option = {
+    ...baseEchartsOptions,
+    color: ['#8D70F8', '#33A4FA'],
+    grid: {
+      containLabel: true,
+      left: '2%',
+      top: '0%',
+      right: '5%',
+      bottom: '10%',
+    },
+    xAxis: {show: false},
+    yAxis: {show: false},
+    legend: {show: false},
+    series: [{
+      name: '年龄分布',
+      type: 'pie',
+      radius: ['75%', '90%'],
+      avoidLabelOverlap: false,
+      label: {
+        show: true,
+        position: 'inside',
+        color: 'white', fontSize: px(20),
+        formatter(val: any) {
+          return (val.value * 100).toFixed(0) + '%';
         },
       },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['第一季度', '第二季度', '第三季度', '第四季度'],
-        splitLine: {show: false, lineStyle: {color: '#073E78'}},
-        axisTick: {show: false},
-        axisLine: {
-          show: true,
-          lineStyle: {
-            color: '#083b70'
-          }
-        },
-        axisLabel: {
-          fontSize: px(12),
-        }
+      labelLine: {
+        show: false
       },
-      yAxis: {
-        type: 'value',
-        splitLine: {show: false, lineStyle: {color: '#073E78'}},
-        data: data.map(i => i.name),
-        axisLine: {
-          show: true,
-          lineStyle: {
-            color: '#083b70'
-          }
-        },
-        axisLabel: {
-          fontSize: px(12),
-          margin: px(10),
-          formatter(val: string) {
-            return parseFloat(val) * 100 + '%';
-          }
-        },
+      itemStyle: {
+        borderColor: '#0F113A',
+        borderWidth: px(4)
       },
-      // @ts-ignore
-      series: [{
-        name: '华东分公司',
-        type: 'line',
-        data: data.find(i => i.name === '华东分公司')?.value
-      },
-        {
-          name: '华北分公司',
-          type: 'line',
-          data: data.find(i => i.name === '华北分公司')?.value
-        },
-        {
-          name: '天津分公司',
-          type: 'line',
-          data: data.find(i => i.name === '天津分公司')?.value
-        },
-        {
-          name: '西南分公司',
-          type: 'line',
-          data: data.find(i => i.name === '西南分公司')?.value
-        },
-        {
-          name: '杭州分公司',
-          type: 'line',
-          data: data.find(i => i.name === '杭州分公司')?.value
-        }
-      ].map(obj => ({
-        ...obj,
-        symbol: 'circle',
-        symbolSize: px(12),
-        lineStyle: {width: px(2)}
-      })),
-    });
+      data: data
+    }]
   };
   useEffect(() => {
-    setInterval(() => {
-      const newData: Data = [
-        {name: '华东分公司', value: [Math.random(), Math.random(), Math.random(), Math.random()]},
-        {name: '华北分公司', value: [Math.random(), Math.random(), Math.random(), Math.random()]},
-        {name: '天津分公司', value: [Math.random(), Math.random(), Math.random(), Math.random()]},
-        {name: '西南分公司', value: [Math.random(), Math.random(), Math.random(), Math.random()]},
-        {name: '杭州分公司', value: [Math.random(), Math.random(), Math.random(), Math.random()]},
-      ];
-      renderChart(newData);
+    const myChart = echarts.init(divRef.current as HTMLDivElement);
+    myChart.setOption(option);
+
+    function update() {
+      const data = option.series[0].data;
+      data[0].value = 0.4 + Math.random() * 0.2;
+      data[1].value = 1 - data[0].value;
+
+      myChart.setOption(option as EChartOption);
+    }
+
+    setInterval(function () {
+      update();
     }, 2000);
-  }, []);
-  useEffect(() => {
-    // @ts-ignore
-    myChart.current = echarts.init(divRef.current as HTMLDivElement);
-    renderChart(data);
 
   }, []);
   return (
     <>
-      <div className="profit">
-        <h2>各分公司利润率趋势</h2>
-        <div className="chart" ref={divRef}></div>
+      <div className="age">
+        <div className="chart">
+          <div className="main" ref={divRef}/>
+          <div className="text">性别</div>
+        </div>
+        <div className="legend">
+          <span className="male"/>男
+          <span className="female"/>女
+        </div>
       </div>
     </>
   );
