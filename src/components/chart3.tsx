@@ -2,11 +2,11 @@ import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {px} from './px';
 import {baseEchartsOptions} from '../models/base-echarts-options';
+import {Data} from '../react-app-env';
 
 const Chart3: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
   const myChart = useRef(null);
-  type Data = { name: string, value: number[] }[]
   const data: Data = [
     {name: '华东分公司', value: [0.56, 0.68, 0.79, 0.71]},
     {name: '华北分公司', value: [0.98, 0.52, 0.87, 0.15]},

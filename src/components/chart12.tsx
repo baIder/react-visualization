@@ -3,10 +3,10 @@ import * as echarts from 'echarts';
 import {px} from './px';
 import {baseEchartsOptions} from '../models/base-echarts-options';
 import {EChartOption} from 'echarts';
+import {Data} from '../react-app-env';
 
 const Chart12: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
-  type Data = { value: number, name: string }[]
   const data: Data = [
     {value: 0.08, name: '纯牛奶'},
     {value: 0.06, name: '奶粉'},
@@ -73,7 +73,7 @@ const Chart12: React.FC = () => {
       data[8].value = 1;
       for (let i = 0; i < 8; i++) {
         data[i].value = Math.random() * 0.2;
-        data[8].value -= data[i].value;
+        data[8].value -= data[i].value as number;
       }
       myChart.setOption(option as EChartOption);
     }

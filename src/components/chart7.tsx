@@ -2,50 +2,67 @@ import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {px} from './px';
 import {baseEchartsOptions} from '../models/base-echarts-options';
+import {Data} from '../react-app-env';
+import {EChartOption} from 'echarts';
 
 const Chart7: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
+  const data: Data = [
+    {value: 0.4, name: '女'},
+    {value: 0.6, name: '男'},
+  ];
+  const option = {
+    ...baseEchartsOptions,
+    color: ['#8D70F8', '#33A4FA'],
+    grid: {
+      containLabel: true,
+      left: '2%',
+      top: '0%',
+      right: '5%',
+      bottom: '10%',
+    },
+    xAxis: {show: false},
+    yAxis: {show: false},
+    legend: {show: false},
+    series: [{
+      name: '年龄分布',
+      type: 'pie',
+      radius: ['75%', '90%'],
+      avoidLabelOverlap: false,
+      label: {
+        show: true,
+        position: 'inside',
+        color: 'white', fontSize: px(20),
+        formatter(val: any) {
+          return (val.value * 100).toFixed(0) + '%';
+        },
+      },
+      labelLine: {
+        show: false
+      },
+      itemStyle: {
+        borderColor: '#0F113A',
+        borderWidth: px(4)
+      },
+      data: data
+    }]
+  };
   useEffect(() => {
     const myChart = echarts.init(divRef.current as HTMLDivElement);
-    myChart.setOption({
-      ...baseEchartsOptions,
-      color: ['#8D70F8', '#33A4FA'],
-      grid: {
-        containLabel: true,
-        left: '2%',
-        top: '0%',
-        right: '5%',
-        bottom: '10%',
-      },
-      xAxis: {show: false},
-      yAxis: {show: false},
-      legend: {show: false},
-      series: [{
-        name: '年龄分布',
-        type: 'pie',
-        radius: ['75%', '90%'],
-        avoidLabelOverlap: false,
-        label: {
-          show: true,
-          position: 'inside',
-          color: 'white', fontSize: px(20),
-          formatter(val: any) {
-            return val.value * 100 + '%';
-          },
-        },
-        labelLine: {
-          show: false
-        },
-        itemStyle: {
-          borderColor: '#0F113A',
-          borderWidth: px(4)
-        },
-        data: [
-          {value: 0.2, name: '女'},
-          {value: 0.8, name: '男'},
-        ]
-      }]
-    });
+    myChart.setOption(option);
+
+    function update() {
+      const data = option.series[0].data;
+      data[0].value = Math.random();
+      data[1].value = 1 - data[0].value;
+
+      myChart.setOption(option as EChartOption);
+    }
+
+    setInterval(function () {
+      update();
+    }, 2000);
+
   }, []);
   return (
     <>
