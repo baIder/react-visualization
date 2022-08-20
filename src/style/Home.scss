@@ -219,8 +219,8 @@
 
           .legend {
             position: absolute;
-            top: px(40);
-            left: px(20);
+            bottom: px(0);
+            left: px(0);
             display: flex;
             align-items: center;
             font-size: px(22);
@@ -239,8 +239,17 @@
 
           .notes {
             position: absolute;
-            bottom: px(10);
-            right: px(10);
+            bottom: px(3);
+            right: px(2);
+          }
+
+          .time {
+            position: absolute;
+            top: px(10);
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: px(32);
+            color: #6B8BD1;
           }
         }
       }

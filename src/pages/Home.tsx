@@ -19,6 +19,7 @@ import Chart14 from '../components/chart14';
 import Header from '../components/Header';
 import Chart15 from '../components/chart15';
 import Chart16 from '../components/chart16';
+import Time from '../components/Time';
 
 const Home: React.FC = () => {
   return (
