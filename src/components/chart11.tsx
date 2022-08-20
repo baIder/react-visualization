@@ -64,7 +64,7 @@ const Chart11: React.FC = () => {
       const data = option.series[0].data;
       data[4].value = 1;
       for (let i = 0; i < 4; i++) {
-        data[i].value = Math.random() * 0.4;
+        data[i].value = 0.15 + Math.random() * 0.1;
         data[4].value -= data[i].value as number;
       }
       myChart.setOption(option as EChartOption);

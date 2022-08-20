@@ -53,7 +53,7 @@ const Chart7: React.FC = () => {
 
     function update() {
       const data = option.series[0].data;
-      data[0].value = Math.random();
+      data[0].value = 0.4 + Math.random() * 0.2;
       data[1].value = 1 - data[0].value;
 
       myChart.setOption(option as EChartOption);

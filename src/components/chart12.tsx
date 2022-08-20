@@ -72,7 +72,7 @@ const Chart12: React.FC = () => {
       const data = option.series[0].data;
       data[8].value = 1;
       for (let i = 0; i < 8; i++) {
-        data[i].value = Math.random() * 0.2;
+        data[i].value = 0.05 + Math.random() * 0.1;
         data[8].value -= data[i].value as number;
       }
       myChart.setOption(option as EChartOption);
