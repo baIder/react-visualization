@@ -21,7 +21,8 @@ const Chart11: React.FC = () => {
     xAxis: {show: false},
     yAxis: {show: false},
     legend: {
-      left: 0,
+      left: '80%',
+      align: 'right',
       top: 'center',
       itemWidth: px(25),
       itemHeight: px(14),
@@ -36,6 +37,7 @@ const Chart11: React.FC = () => {
         startAngle: -20,
         type: 'pie',
         radius: ['25%', '90%'],
+        center: ['40%', '50%'],
         avoidLabelOverlap: false,
         label: {
           show: true, position: 'outside', color: 'white', fontSize: px(20),
