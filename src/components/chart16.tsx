@@ -53,13 +53,14 @@ const Chart16: React.FC = () => {
           show: true,
           position: 'inside',
           fontSize: px(14),
+          color: '#fff',
         },
         emphasis: {
           focus: 'series'
         },
         data: [320, 302, 341, 374, 390],
         itemStyle: {
-          color: '#3b5284'
+          color: '#8D70F8'
         }
       },
       {
@@ -70,13 +71,14 @@ const Chart16: React.FC = () => {
           show: true,
           position: 'inside',
           fontSize: px(14),
+          color: '#fff',
         },
         emphasis: {
           focus: 'series'
         },
         data: [-120, -132, -101, -134, -190],
         itemStyle: {
-          color: '#01689c'
+          color: '#33A4FA'
         }
       }
     ]
