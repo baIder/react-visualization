@@ -18,6 +18,7 @@ import Chart13 from '../components/chart13';
 import Chart14 from '../components/chart14';
 import Header from '../components/Header';
 import Chart15 from '../components/chart15';
+import Chart16 from '../components/chart16';
 
 const Home: React.FC = () => {
   return (
@@ -45,7 +46,7 @@ const Home: React.FC = () => {
           </section>
           <section className="bordered section5"><Chart11/></section>
           <section className="bordered section6"><Chart12/></section>
-          <section className="bordered section7"><Chart13/></section>
+          <section className="bordered section7"><Chart16/></section>
         </main>
         <footer>&copy; bald3r · 大屏可视化</footer>
       </div>
