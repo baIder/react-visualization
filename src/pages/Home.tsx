@@ -11,6 +11,7 @@ import Chart7 from '../components/chart7';
 import Header from '../components/Header';
 import Chart1 from '../components/chart1';
 import Chart8 from '../components/chart8';
+import RealtimeData from '../components/RealtimeData';
 
 const Home: React.FC = () => {
   return (
@@ -32,7 +33,8 @@ const Home: React.FC = () => {
           </section>
           <section className="section4">
             <Chart5/>
-            <div className="section4-2 bordered">
+            <div className="section4-2">
+              <RealtimeData/>
             </div>
           </section>
           <section className="bordered section5"><Chart6/></section>
