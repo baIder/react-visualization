@@ -2,7 +2,6 @@ import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {px} from './px';
 import {baseEchartsOptions} from '../models/base-echarts-options';
-import {Data} from '../react-app-env';
 import {EChartOption} from 'echarts';
 
 const Chart8: React.FC = () => {
